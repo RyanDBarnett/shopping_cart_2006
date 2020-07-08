@@ -102,4 +102,18 @@ class ShoppingCartTest < Minitest::Test
 
     assert_equal 100, cart.percentage_occupied
   end
+
+  def test_it_can_sort_its_products_by_quantity_highest_to_lowest
+    cart = ShoppingCart.new("King Soopers", "30items")
+    toilet_paper = Product.new(:paper, 'toilet paper', 3.70, '10')
+    chicken = Product.new(:meat, 'chicken', 4.50, '2')
+    apples = Product.new(:fruit, 'apple', 2.00, '5')
+
+    cart.add_product(chicken)
+    cart.add_product(apples)
+    cart.add_product(toilet_paper)
+
+    assert_equal [chicken, apples, toilet_paper], cart.products
+    assert_equal [toilet_paper, apples, chicken], cart.sorted_products_by_quantity
+  end
 end
