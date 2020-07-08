@@ -57,4 +57,18 @@ class ShoppingCartTest < Minitest::Test
     cart.add_product(chicken)
     assert_equal 12, cart.total_number_of_products
   end
+
+  def test_it_knows_if_it_is_full_or_not
+    cart = ShoppingCart.new("King Soopers", "30items")
+    alot_of_toilet_paper = Product.new(:paper, 'toilet paper', 3.70, '29')
+    chicken = Product.new(:meat, 'chicken', 4.50, '1')
+
+    cart.add_product(alot_of_toilet_paper)
+
+    assert_equal false, cart.is_full?
+
+    cart.add_product(chicken)
+
+    assert_equal true, cart.is_full?
+  end
 end
