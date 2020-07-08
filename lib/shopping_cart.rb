@@ -22,4 +22,14 @@ class ShoppingCart
   def products_by_category(category)
     @products.select { |product| product.category == category }
   end
+
+  def percentage_occupied
+    percentage = ((total_number_of_products.to_f / @capacity) * 100).round(2)
+
+    if (percentage > 100)
+      return 100
+    end
+    
+    percentage
+  end
 end
