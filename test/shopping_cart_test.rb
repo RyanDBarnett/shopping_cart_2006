@@ -18,4 +18,9 @@ class ShoppingCartTest < Minitest::Test
     cart = ShoppingCart.new("King Soopers", "30items")
     assert_equal 30, cart.capacity
   end
+
+  def test_it_should_have_no_products_by_default
+    cart = ShoppingCart.new("King Soopers", "30items")
+    assert_equal [], cart.products
+  end
 end
