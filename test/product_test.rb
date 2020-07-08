@@ -36,4 +36,9 @@ class ProductTest < Minitest::Test
     assert_equal 37.0, product1.total_price
     assert_equal 9.0, product2.total_price
   end
+
+  def test_it_has_not_been_hoarded_by_default
+    product = Product.new(:paper, 'toilet paper', 3.70, '10')
+    assert_equal false, product.hoarded
+  end
 end
