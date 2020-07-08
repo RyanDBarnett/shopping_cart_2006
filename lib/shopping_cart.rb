@@ -29,7 +29,11 @@ class ShoppingCart
     if (percentage > 100)
       return 100
     end
-    
+
     percentage
+  end
+
+  def sorted_products_by_quantity
+    @products.sort {|productA, productB| productB.quantity <=> productA.quantity}
   end
 end
