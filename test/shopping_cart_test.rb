@@ -88,6 +88,7 @@ class ShoppingCartTest < Minitest::Test
     cart = ShoppingCart.new("King Soopers", "30items")
     toilet_paper = Product.new(:paper, 'toilet paper', 3.70, '10')
     chicken = Product.new(:meat, 'chicken', 4.50, '2')
+    even_more_toilet_paper = Product.new(:paper, 'toilet paper', 3.70, '20')
 
     cart.add_product(toilet_paper)
 
@@ -96,5 +97,9 @@ class ShoppingCartTest < Minitest::Test
     cart.add_product(chicken)
 
     assert_equal 40, cart.percentage_occupied
+
+    cart.add_product(even_more_toilet_paper)
+
+    assert_equal 100, cart.percentage_occupied
   end
 end
