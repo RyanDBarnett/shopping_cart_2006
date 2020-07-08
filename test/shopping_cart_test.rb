@@ -45,4 +45,16 @@ class ShoppingCartTest < Minitest::Test
 
     assert_equal expected_details, cart.details
   end
+
+  #Iteration3
+  def test_it_can_give_us_the_total_number_of_products_its_carrying
+    cart = ShoppingCart.new("King Soopers", "30items")
+    toilet_paper = Product.new(:paper, 'toilet paper', 3.70, '10')
+    chicken = Product.new(:meat, 'chicken', 4.50, '2')
+
+    cart.add_product(toilet_paper)
+    assert_equal 10, cart.total_number_of_products
+    cart.add_product(chicken)
+    assert_equal 12, cart.total_number_of_products
+  end
 end
