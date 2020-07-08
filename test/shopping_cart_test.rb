@@ -82,4 +82,19 @@ class ShoppingCartTest < Minitest::Test
 
     assert_equal [toilet_paper], cart.products_by_category(:paper)
   end
+
+  #Iteration3
+  def test_it_can_tell_what_percentage_of_itself_is_occupied
+    cart = ShoppingCart.new("King Soopers", "30items")
+    toilet_paper = Product.new(:paper, 'toilet paper', 3.70, '10')
+    chicken = Product.new(:meat, 'chicken', 4.50, '2')
+
+    cart.add_product(toilet_paper)
+
+    assert_equal 33.33, cart.percentage_occupied
+
+    cart.add_product(chicken)
+
+    assert_equal 40, cart.percentage_occupied
+  end
 end
